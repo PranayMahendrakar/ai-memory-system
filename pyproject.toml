@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "ai-memory-system"
+version = "0.1.0"
+description = "Persistent AI Memory System for LLMs"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "PranayMahendrakar" }]
+requires-python = ">=3.9"
+keywords = ["llm", "memory", "ai", "vector-search", "chatbot", "embeddings"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Typing :: Typed",
+]
+dependencies = []  # Zero mandatory dependencies
+
+[project.optional-dependencies]
+openai = ["openai>=1.0.0"]
+sentence-transformers = ["sentence-transformers>=2.0.0"]
+numpy = ["numpy>=1.21.0"]
+faiss = ["faiss-cpu>=1.7.0"]
+all = ["openai>=1.0.0", "sentence-transformers>=2.0.0", "numpy>=1.21.0"]
+dev = ["pytest>=7.0.0", "pytest-cov>=4.0.0", "black>=23.0.0", "mypy>=1.0.0", "ruff>=0.1.0"]
+
+[project.urls]
+Homepage = "https://github.com/PranayMahendrakar/ai-memory-system"
+Repository = "https://github.com/PranayMahendrakar/ai-memory-system"
+Issues = "https://github.com/PranayMahendrakar/ai-memory-system/issues"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.black]
+line-length = 100
+target-version = ["py39", "py310", "py311"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "N", "W"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.9"
+strict = false
+ignore_missing_imports = true
